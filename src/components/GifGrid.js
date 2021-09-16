@@ -1,7 +1,9 @@
 import React from 'react' //, { useState, useEffect } le saco esto xq voy a trabajar en el custom hook
-import { GifGridItem } from './GifGridItem'
-// import { getGifs } from '../helpers/getGifs'
-import { useFetchGifs } from '../hooks/useFetchGifs'
+import PropTypes from 'prop-types';
+import { useFetchGifs } from '../hooks/useFetchGifs';
+import { GifGridItem } from './GifGridItem';
+// import { getGifs } from '../helpers/getGifs';
+
 
 export const GifGrid = ({ category }) => {
   
@@ -18,20 +20,20 @@ export const GifGrid = ({ category }) => {
 
   return (
     <>
-    <h3 className="animate__bounceInRight"> {category} </h3>
-    {/* { loading ? 'Cargando...' : 'Fin de carga' } */}
-    { loading && <p className="animate_animated animate_flash">'Cargando...'</p> }  
-    {/* con el && solo evalua el 1ro si es true y con el false no hace nada */}
-    <div className="card-grid">
-      {
-        images.map( img => (  //antes del custom hook era images.map, despues de la asignacion data:images puedo volver a usar images
-          <GifGridItem 
-            key={ img.id }
-            {...img}
-            // img={ img } 
-          />
-        ))
-      }
+      <h3 className="animate__bounceInRight"> {category} </h3>
+      {/* { loading ? 'Cargando...' : 'Fin de carga' } */}
+      { loading && <p className="animate_animated animate_flash">'Cargando...'</p> }  
+      {/* con el && solo evalua el 1ro si es true y con el false no hace nada */}
+      <div className="card-grid">
+        {
+          images.map( img => (  //antes del custom hook era images.map, despues de la asignacion data:images puedo volver a usar images
+            <GifGridItem 
+              key={ img.id }
+              {...img}
+              // img={ img } 
+            />
+          ))
+        }     
 
         {/* <ol>
           {
@@ -53,3 +55,8 @@ export const GifGrid = ({ category }) => {
     </>
   )
 }
+
+GifGrid.propTypes = {
+  category: PropTypes.string.isRequired,
+}
+

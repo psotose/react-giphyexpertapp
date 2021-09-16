@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
-export const GifGridItem = ( {id, title, url} ) => {  // se pone props en vez de img xq es lo que es en relidad ( props )
+const GifGridItem = ( {title, url} ) => {  // se pone props en vez de img xq es lo que es en relidad ( props )
                                           // pero si desestructuro es mas facil de leer
   
   // console.log({id, title, url});
@@ -12,3 +13,9 @@ export const GifGridItem = ( {id, title, url} ) => {  // se pone props en vez de
     </div>
   )
 }
+
+GifGridItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+}
+export default GifGridItem;

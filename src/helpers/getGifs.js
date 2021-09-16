@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 
 export const getGifs = async(category) => { 
   const giphy_api_key = process.env.REACT_APP_GIPHY_API_KEY
